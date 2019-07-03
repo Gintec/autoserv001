@@ -1,0 +1,13 @@
+}else{
+  while($pd = mysql_fetch_array($partinfo)){
+  
+  $partd = $pd['partdesc'];
+  $partno = $pd['partno'];
+  $ucost = $pd['unitcost'];
+  $iqty = $pd['quantity'];
+  if($ammt==""){
+  $amount = $ucost*$qtyo;
+  }else{$amount = $ammt;}
+  $tamount+=$amount;
+  $order = mysql_query("INSERT INTO partsorder VALUES('$customerid','$jobno','$partd','$partno','$qtyo','$amount','$pdate','0','Pending')") or die(mysql_error());
+  }}
